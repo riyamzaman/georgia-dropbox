@@ -1,0 +1,5133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      
+      .marker {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7BsXMpeKcFwnT04gA41jSZMdCF9eQZmaqrw&usqp=CAU');
+        background-size: cover;
+        width: 5px;
+        height: 5px;
+        border-radius: 100%;
+        cursor: pointer;
+      }
+      
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+      
+      .mapbox-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+
+  
+<script>
+  
+mapboxgl.accessToken = 'pk.eyJ1IjoicnphbWFuIiwiYSI6ImNramFnM3cyczFvZTQyeHFnb3I1ZTNmajUifQ.-l-5vZvNaSyB4mef5A0EnA';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/dark-v10',
+  center: [-96, 37.8],
+  zoom: 3
+});
+      
+ var geojson = {
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3452206,31.7761805 ]
+    },
+    "properties": {
+    "County":"Appling",
+    "Location Name":"Elections Office ",
+    "Address":"83 South Oak Street Baxley, GA 31513 ",
+    "Notes":"",
+    "Hours":"On curb outside office so driver doesn't have to get out of car 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3502327,31.7778415 ]
+    },
+    "properties": {
+    "County":"Appling",
+    "Location Name":"Courthouse Annex",
+    "Address":"69 Tippins Street Baxley, GA 31513 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.8425087,31.2926525 ]
+    },
+    "properties": {
+    "County":"Atkinson",
+    "Location Name":"Elections Office ",
+    "Address":"636 Austin Avenue E Pearson, GA 31602 ",
+    "Notes":"",
+    "Hours":"Note: This Dropbox may not be open 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.464885,31.5413592 ]
+    },
+    "properties": {
+    "County":"Bacon",
+    "Location Name":"Elections Office ",
+    "Address":"232 W 12th Street Alma, GA 31510 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F 9-5, Ballots & Applications both accepted - separate box for applications on top of ballot dropbox"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3412951,31.317666 ]
+    },
+    "properties": {
+    "County":"Baker",
+    "Location Name":"Elections Office ",
+    "Address":"167 Baker Place Newton, GA 39870 ",
+    "Notes":"",
+    "Hours":"24/7 outside the courthouse"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.243047,33.098832 ]
+    },
+    "properties": {
+    "County":"Baldwin",
+    "Location Name":"Elections Office ",
+    "Address":"1601 N. Columbia, Suite 110 Milledgeville, GA 31061 ",
+    "Notes":"",
+    "Hours":"Installed outside the new office, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.2286005,33.0815124 ]
+    },
+    "properties": {
+    "County":"Baldwin",
+    "Location Name":"Courthouse",
+    "Address":"121 N Wilkinson St, Suite 102 Milledgeville, GA 31061 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4974345,34.335437 ]
+    },
+    "properties": {
+    "County":"Banks",
+    "Location Name":"Banks Elections office dropoff",
+    "Address":"226 Candler Street Homer, GA 30547 ",
+    "Notes":"",
+    "Hours":"24/7, Candler runs off the main road through Homer, go up the hill and will see the office"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7093691,33.9977319 ]
+    },
+    "properties": {
+    "County":"Barrow",
+    "Location Name":"Elections Office, Administration Annex",
+    "Address":"233 E. Broad St Winder, GA 30680 ",
+    "Notes":"",
+    "Hours":"24/7, outside the office. Ballots and applications may also be dropped off at this location inside the office, M-F, 8-5."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.8141196,34.2062407 ]
+    },
+    "properties": {
+    "County":"Bartow",
+    "Location Name":"Elections Office ",
+    "Address":"1300 Joe Frank Harris Pkwy Cartersville, GA 30120 ",
+    "Notes":"",
+    "Hours":"24/7; Ballots and applications may also be dropped off at this location inside the office, M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7997289,34.1658417 ]
+    },
+    "properties": {
+    "County":"Bartow",
+    "Location Name":"Bartow County Courthouse",
+    "Address":"135 W Cherokee Ave Cartersville, GA 30120 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.681162,34.1137254 ]
+    },
+    "properties": {
+    "County":"Bartow",
+    "Location Name":"Allatoona Resource Center",
+    "Address":"6503 Glade Rd SE Acworth, GA 30102 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9369558,34.1471996 ]
+    },
+    "properties": {
+    "County":"Bartow",
+    "Location Name":"Euharlee City Hall",
+    "Address":"30 Burge's Mill Rd Euharlee, GA 30145 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9003887,34.3457503 ]
+    },
+    "properties": {
+    "County":"Bartow",
+    "Location Name":"Manning Hill Gym",
+    "Address":"163 Manning Mill Road Adairsville, GA 30103 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.2552529,31.7137885 ]
+    },
+    "properties": {
+    "County":"Ben Hill",
+    "Location Name":"",
+    "Address":"115 W Pine St Fitzgerald, GA 31750 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Can drop off in the Elections office. "
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.2494298,31.2084994 ]
+    },
+    "properties": {
+    "County":"Berrien",
+    "Location Name":"Elections Office ",
+    "Address":"201 N Davis St, Room 142 Nashville, GA 31639 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F 8-4:30 Can call ahead and someone will come pick up from them or can leave with security officer who will all for someone to come pick up the ballot"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6659271,32.8114278 ]
+    },
+    "properties": {
+    "County":"Bibb",
+    "Location Name":"Elections Office ",
+    "Address":"2525 Pio Nono Avenue, Suite 1200 Macon, GA 31206 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Inside the office there is a separate box for applications and one for ballots; M-F 8:30-5:30"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6659271,32.8114278 ]
+    },
+    "properties": {
+    "County":"Bibb",
+    "Location Name":"Elections Office ",
+    "Address":"2525 Pio Nono Avenue, Suite 1200 Macon, GA 31206 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7, ballots only"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6283497,32.8386535 ]
+    },
+    "properties": {
+    "County":"Bibb",
+    "Location Name":"Courthouse Annex",
+    "Address":"639 Mulberry Street Macon, GA 31201 ",
+    "Notes":"",
+    "Hours":"24/7. Does accept applications"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.355355,32.3875693 ]
+    },
+    "properties": {
+    "County":"Bleckley",
+    "Location Name":"County Court House",
+    "Address":"112 N Second St Cochran, GA 31014 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"In parking lot near police department - 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.9799613,31.2094192 ]
+    },
+    "properties": {
+    "County":"Brantley",
+    "Location Name":"Elections Office ",
+    "Address":"10305 N Main St Ste 400 Nahunta, GA 31553 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Drop box is on the door to office. Big orange sign that says \"dropbox.\" Built into the door. Drop the ballot through the slot and it goes into the locked box. Available 24/7."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.5521956,30.7798113 ]
+    },
+    "properties": {
+    "County":"Brooks",
+    "Location Name":"Elections Office ",
+    "Address":"610 S. Highland Rd. Quitman, GA 31643 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.6214468,32.1334622 ]
+    },
+    "properties": {
+    "County":"Bryan",
+    "Location Name":"Pembroke County Courthouse",
+    "Address":"151 S. College St. Pembroke, GA 31321 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.2598689,31.8811648 ]
+    },
+    "properties": {
+    "County":"Bryan",
+    "Location Name":"Richmond Hill Center at Bryan County Administration Office",
+    "Address":"66 Matthew Freeman Dr. Richmond Hill, GA 31324 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.7835295,32.4519474 ]
+    },
+    "properties": {
+    "County":"Bulloch",
+    "Location Name":"Elections Office (1)",
+    "Address":"113 North Main Street, Suite 201 Statesboro, GA 30458 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Located in lobby of annex building. These are boxes that they have bolted to a table in the back of the annex building. Available during hours building is open, M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.7835295,32.4519474 ]
+    },
+    "properties": {
+    "County":"Bulloch",
+    "Location Name":"Elections Office (2)",
+    "Address":"113 North Main Street, Suite 201 Statesboro, GA 30458 ",
+    "Notes":"",
+    "Hours":"Located in parking lot of office, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.01549,33.090532 ]
+    },
+    "properties": {
+    "County":"Burke",
+    "Location Name":"Elections Office ",
+    "Address":"602 North Liberty Street, Room 104 Waynesboro, GA 30830 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F 9-5 and early voting day Oct 24, 9 - 4"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9730207,33.293442 ]
+    },
+    "properties": {
+    "County":"Butts",
+    "Location Name":"Elections Office ",
+    "Address":"625 West Third Street Jackson, GA 30233 ",
+    "Notes":"",
+    "Hours":"Outside, just in front of building. 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5996693,31.5376621 ]
+    },
+    "properties": {
+    "County":"Calhoun",
+    "Location Name":"",
+    "Address":"31 Court Street, Suite A Morgan, GA 39866 ",
+    "Notes":"",
+    "Hours":"Located on south side of courthouse wall."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.7207486,30.9683435 ]
+    },
+    "properties": {
+    "County":"Camden",
+    "Location Name":"",
+    "Address":"200 E 4th St Woodbine, GA 31569 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.644302,30.7890356 ]
+    },
+    "properties": {
+    "County":"Camden",
+    "Location Name":"",
+    "Address":"107 Gross Rd Kingsland, GA 31548 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F 9-5, closed 12:30-1:30"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.0380196,32.3914167 ]
+    },
+    "properties": {
+    "County":"Candler",
+    "Location Name":"Elections Office ",
+    "Address":"1075 E Hiawatha Street, Ste A Metter, GA 30439 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F, 9-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.0718445,33.5841753 ]
+    },
+    "properties": {
+    "County":"Carroll",
+    "Location Name":"Elections Office ",
+    "Address":"423 College Street, Room 302 Carrollton, GA 30117 ",
+    "Notes":"",
+    "Hours":"Back of the building"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9327098,33.7323513 ]
+    },
+    "properties": {
+    "County":"Carroll",
+    "Location Name":"",
+    "Address":"42 Community Square Blvd  Villa Rica, GA 30180 ",
+    "Notes":"",
+    "Hours":"Located in the drive through lane of the Customer Service Building behind City Hall, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.1065128,34.9160681 ]
+    },
+    "properties": {
+    "County":"Catoosa",
+    "Location Name":"",
+    "Address":"5238 Evitt Street Ringgold, GA 30736 ",
+    "Notes":"",
+    "Hours":"Located outside the office, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.004905,30.831928 ]
+    },
+    "properties": {
+    "County":"Charlton",
+    "Location Name":"Elections Office ",
+    "Address":"1520 Third Street, Suite C Folkston, GA 31537 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F, 9-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.0998617,32.0053913 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Elections Office ",
+    "Address":"1117 Eisenhower Drive, Ste E Savannah, GA 31406 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.0823214,32.0622015 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"W.W. Law Center",
+    "Address":"900 E. Bolton St. Savannah, GA 31401 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.0704767,32.0287808 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Savannah State T.A. Wright Stadium",
+    "Address":"4437 Skidaway Road Savannah, GA 31404 ",
+    "Notes":"",
+    "Hours":"N Tompkins Dr., off LaRoche, next to Wright Stadium"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.0075238,32.0355215 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Whitemarsh Island Chatham Police Precinct",
+    "Address":"54 Johnny Mercer Blvd. Savannah, GA 31410 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.1285493,32.0507701 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Liberty City Community Center",
+    "Address":"1401 Mills B Lane Blvd. Savannah, GA 31405 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.1758708,31.9857137 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Southwest Chatham Library",
+    "Address":"14097 Abercorn St. Savannah, GA 31419 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.150223,32.102055 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"UGA Extension",
+    "Address":"17 Minus Ave. Savannah, GA 31408 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.0970224,32.0765792 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Civic Center",
+    "Address":"301 W. Oglethorpe Ave. Savannah, GA 31401 ",
+    "Notes":"",
+    "Hours":"Montgomery Street side"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.126682,32.0726772 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Carver Heights Community Center",
+    "Address":"905 Collat Ave. Savannah, GA 31415 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.2502054,32.1156821 ]
+    },
+    "properties": {
+    "County":"Chatham",
+    "Location Name":"Pooler City Hall ",
+    "Address":"100 Hwy 80 SW Pooler, GA 31322 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7641763,32.3080016 ]
+    },
+    "properties": {
+    "County":"Chattahoochee",
+    "Location Name":"",
+    "Address":"215 McNaughton St Cusseta, GA 31805 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.3484133,34.4801287 ]
+    },
+    "properties": {
+    "County":"Chattooga",
+    "Location Name":"Registrar's Office ",
+    "Address":"10017 Commerce St. Summerville, GA 30747 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Applications and Ballots accepted. Hours are 8:30 to 5 now during early voting"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5052589,34.2100621 ]
+    },
+    "properties": {
+    "County":"Cherokee",
+    "Location Name":"County Tax Assessors Office",
+    "Address":"2780 Marietta Hwy Canton, GA 30114 ",
+    "Notes":"",
+    "Hours":"Dropbox located outside and behind the Tax Assessor’s building, 24/7; Ballots and Applications accepted inside office, 8:30-5; Office hours during the week before Nov 3 will be M-F 8-7. October 24: 9-4"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5120599,34.1146191 ]
+    },
+    "properties": {
+    "County":"Cherokee",
+    "Location Name":"Cherokee County South Annex Complex",
+    "Address":"7545 Main St Building 200 Woodstock, GA 30188 ",
+    "Notes":"",
+    "Hours":"Located B/T Rec Center and Police Dept, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4872694,34.2365748 ]
+    },
+    "properties": {
+    "County":"Cherokee",
+    "Location Name":"Old Board of Elections Office",
+    "Address":"400 East Main Street Canton, GA 30114 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3767269,33.9594279 ]
+    },
+    "properties": {
+    "County":"Clarke",
+    "Location Name":"Board of Elections Office",
+    "Address":"155 East Washington Street Athens, GA 30601 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Dropbox outside available 24/7, may drop off applications and ballots inside M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4035579,33.9449534 ]
+    },
+    "properties": {
+    "County":"Clarke",
+    "Location Name":"Athens-Clarke County Library",
+    "Address":"2025 Baxter Street Athens, GA 30603 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3704339,33.9588796 ]
+    },
+    "properties": {
+    "County":"Clarke",
+    "Location Name":"Athens-Clarke County Multimodal Transportation Center",
+    "Address":"775 E. Broad St. Athens, GA 30605 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3442845,33.9176772 ]
+    },
+    "properties": {
+    "County":"Clarke",
+    "Location Name":"Fire Station #7",
+    "Address":"2350 Barnett Shoals Rd Athens, GA 30605 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4738057,33.9452336 ]
+    },
+    "properties": {
+    "County":"Clarke",
+    "Location Name":"ACC Extension",
+    "Address":"275 Cleveland Road Bogart, GA 30622 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.279135,33.9672311 ]
+    },
+    "properties": {
+    "County":"Clarke",
+    "Location Name":"City Hall",
+    "Address":"125 S. Church Street Winterville, GA 30683 ",
+    "Notes":"",
+    "Hours":"Front of building, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.0488835,31.605324 ]
+    },
+    "properties": {
+    "County":"Clay",
+    "Location Name":"The Courthouse (Office of Election Superindendent)",
+    "Address":"210 S. Washington St. Suite 4 Fort Gaines, GA 39851 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Drop box on front porch, 24/7 May also walk in or mail apps and ballots, 8-4:30"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.0493671,31.6065511 ]
+    },
+    "properties": {
+    "County":"Clay",
+    "Location Name":"Registrar's Office",
+    "Address":"103 W. Commerce St. Fort Gaines, GA 39851 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"May walk in apps and ballots. 8-4:30"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.0488835,31.605324 ]
+    },
+    "properties": {
+    "County":"Clay",
+    "Location Name":"",
+    "Address":"210 South Washington Street, Suite 1 Fort Gaines, GA 39851 ",
+    "Notes":"",
+    "Hours":"24/7, Drop box on front porch of courthouse."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3524761,33.5207838 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"Clayton County Board of Elections & Registration",
+    "Address":"121 S. McDonough Street, Annex II Jonesboro, GA 30236 ",
+    "Notes":"",
+    "Hours":"Side of Courthouse near Handicap Parking"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2769284,33.5872197 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"Carl Rhodenizer Recreation Center",
+    "Address":"3499 Rex Road Rex, GA 30273 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4372056,33.5912927 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"Virginia Burton Gray Recreation Center",
+    "Address":"1475 East Fayetteville Road Riverdale, GA 30274 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.422866,33.5857219 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"Frank Bailey Senior Center",
+    "Address":"6213 Riverdale Road Riverdale, GA 30274 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3134418,33.5278632 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"J. Charley Griswell Senior Center",
+    "Address":"2300 Highway 138 SE Jonesboro, GA 30236 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3316079,33.4476278 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"South Clayton Recreation Center",
+    "Address":"1837 McDonough Road Hampton, GA 30228 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3678001,33.623152 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"Forest Park Branch Library",
+    "Address":"4812 West Street Forest Park , GA 30297 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3633235,33.5532526 ]
+    },
+    "properties": {
+    "County":"Clayton",
+    "Location Name":"Lee Headquarters Library",
+    "Address":"865 Battle Creek Road Jonesboro, GA 30236 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.7514869,31.0418771 ]
+    },
+    "properties": {
+    "County":"Clinch",
+    "Location Name":"Board of Elections office",
+    "Address":"25 Court Square, Suite A Homerville, GA 31634 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Office open 9-5, applications and ballots may be dropped off inside. Office closed 12-1 for lunch but applications and ballots may be dropped through the slot at the door during open office hours only.  There is a slot where ballots can be dropped off through the door but only during office hours which have not changed."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4229117,33.9628857 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"East Cobb Government Service Center",
+    "Address":"4400 Lower Roswell Rd Marietta, GA 30068 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.611648,33.8399847 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"South Cobb Government Service Center",
+    "Address":"4700 Austell Rd Austell, GA 30106 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.6519363,34.0386566 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"North Cobb Regional Library",
+    "Address":"3535 Old 41 Hwy NW Kennesaw, GA 30144 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5738877,33.9536152 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Elections Main Office",
+    "Address":"736 Whitlock Avenue Marietta, GA 30064 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7022049,33.9989253 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"West Cobb Regional Library",
+    "Address":"1750 Dennis Kemp Ln NW Kennesaw, GA 30152 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.606399,34.0090186 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Cobb Fire Station 8",
+    "Address":"2380 N. Cobb Pkwy Kennesaw, GA 30152 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.493007,33.9501596 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Sewell Mill Library & Cultural Center",
+    "Address":"2051 Lower Roswell Rd Marietta, GA 30068 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4841135,33.8493535 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Cobb County Fire Station 4",
+    "Address":"1901 Cumberland Pkwy SE Atlanta, GA 30339 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5006532,33.8945101 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Windy Hill Community Center",
+    "Address":"1885 Roswell St SE Smyrna , GA 30080 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.6875032,33.945663 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Cobb County Fire Station 13",
+    "Address":"4640 Dallas Hwy Marietta, GA 30064 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5858108,33.9040987 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Cobb County Animal Services",
+    "Address":"1060 Al Bishop Dr., SW Marietta, GA 30008 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.524238,34.02516 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Gritters Library",
+    "Address":"880 Shaw Park Road Marietta, GA 30066 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4657452,34.0313292 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Mountain View Library",
+    "Address":"3320 Sandy Plains Road Marietta, GA 30066 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5800293,33.7784716 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"South Cobb Recreation Center",
+    "Address":"875 Riverside Pkwy Austell, GA 30168 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5776557,33.8252317 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"South Cobb Regional Library",
+    "Address":"805 Clay Street Mableton, GA 30126 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.6761068,33.8565634 ]
+    },
+    "properties": {
+    "County":"Cobb",
+    "Location Name":"Powder Springs Library",
+    "Address":"4181 Atlanta Street Powder Springs, GA 30127 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.8524093,31.5077855 ]
+    },
+    "properties": {
+    "County":"Coffee",
+    "Location Name":"",
+    "Address":"224 West Ashley Street Douglas, GA 31533 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Dropbox is outside front of building-24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7872064,31.1802509 ]
+    },
+    "properties": {
+    "County":"Colquitt",
+    "Location Name":"Colquitt County Courthouse Annex",
+    "Address":"101 E Central Ave Moultrie, GA 31768 ",
+    "Notes":"",
+    "Hours":"Back of Annex"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.135705,33.5452083 ]
+    },
+    "properties": {
+    "County":"Columbia",
+    "Location Name":"Elections Office",
+    "Address":"500 Faircloth Dr. Bldg E Evans, GA 30809 ",
+    "Notes":"",
+    "Hours":"May walk ballot inside office during business hours, and until 7pm on Election Day"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4167814,31.1210889 ]
+    },
+    "properties": {
+    "County":"Cook",
+    "Location Name":"Elections Office",
+    "Address":"1200 South Hutchinson Avenue Adel, GA 31620 ",
+    "Notes":"",
+    "Hours":"Blue box close to door, Outside administration bldg 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7982668,33.3745719 ]
+    },
+    "properties": {
+    "County":"Coweta",
+    "Location Name":"Coweta County Administration Building",
+    "Address":"22 East Broad Street Newnan, GA 30263 ",
+    "Notes":"",
+    "Hours":"East Broad Street Side, top of the entrance “A” ramp."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0211479,32.7146375 ]
+    },
+    "properties": {
+    "County":"Crawford",
+    "Location Name":"",
+    "Address":"640 Hwy 128 Roberta, GA 31078 ",
+    "Notes":"",
+    "Hours":"Old Tech Building, Main door"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7831842,31.9672219 ]
+    },
+    "properties": {
+    "County":"Crisp",
+    "Location Name":"Elections Office",
+    "Address":"210 S 7th St Cordele, GA 31015 ",
+    "Notes":"",
+    "Hours":"Outside main entrance on the main walkway, not in the basement area with the Elections Office, 24/"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.5107689,34.8720856 ]
+    },
+    "properties": {
+    "County":"Dade",
+    "Location Name":"Dade County Administrative Building",
+    "Address":"71 Case Ave Trenton, GA 30752 ",
+    "Notes":"",
+    "Hours":"Beside door of elections office 24/7, additional drive-thru dropbox in the parking lot 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1230221,34.4201781 ]
+    },
+    "properties": {
+    "County":"Dawson",
+    "Location Name":"",
+    "Address":"96 Academy Avenue  Dawsonville, GA 30534 ",
+    "Notes":"",
+    "Hours":"On the right side of building on the curb, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1640393,33.7140828 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Lou Walker Senior Center",
+    "Address":"2538 Panola Rd Lithonia, GA 30058 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2962158,33.7737234 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Decatur City Hall",
+    "Address":"509 N. McDonough St. Decatur, GA 30030 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2210458,33.7043991 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Wesley Chapel - Wm. C. Brown Library",
+    "Address":"2861 Wesley Chapel Rd. Decatur, GA 30034 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2387008,33.8049361 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Clarkston Library",
+    "Address":"951 N. Indian Creek Dr. Clarkston, GA 30021 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2085288,33.8572466 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Tucker- Reid H. Cofer Library",
+    "Address":"5234 LaVista Rd Tucker, GA 30084 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3069467,33.8093145 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Toco Hills-Avia G. Williams",
+    "Address":"1282 McConnell Dr. Decatur, GA 30033 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2342631,33.6552256 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"County Library County Line-Ellenwood",
+    "Address":"4331 River Rd. Ellenwood, GA 30294 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2395382,33.8421526 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"City of Tucker",
+    "Address":"1975 Lakeside Pkwy, Suite 350 Tucker, GA 30084 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.285909,33.7337119 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Sterling at Candler Village",
+    "Address":"2536 Mellville Ave Decatur, Ga 30032 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2783852,33.9009514 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Doraville City Hall",
+    "Address":"3725 Park Ave Atlanta, Ga 30340 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3386269,33.9367435 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Dunwoody City Hall",
+    "Address":"4800 Ashford Dunwoody Rd. Dunwoody, Ga 30338 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1698496,33.8049628 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Stone Mtn. City Hall",
+    "Address":"875 Main Street Stone Mtn, Ga 30083 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0838805,33.6904766 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Stonecrest City Hall",
+    "Address":"3120 Stonecrest Blvd. Stonecrest, Ga 30038 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2538903,33.7074092 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Exchange Park",
+    "Address":"2771 Columbia Dr. Decatur, Ga 30034 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3337677,33.8706178 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Brookhaven City Hall",
+    "Address":"4362 Peachtree Rd. NE Brookhaven, Ga 30319 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.246648,33.7780804 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Voter Registration and Elections Bldg.",
+    "Address":"4380 Memorial Dr. Decatur, Ga 30032 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1657701,33.7862908 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Wade Walker Family YMCA",
+    "Address":"5605 Rockbridge Road Stone Mountain, GA 30087 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1051225,33.7860642 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Dekalb County Fire Station #25",
+    "Address":"7136 Rockbrdige Road Stone Mountain, GA 30087 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2393636,33.8089202 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Clarkston City Hall",
+    "Address":"3921 Church Street Clarkston, GA 30021 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.17809,33.6779641 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Salem - Panola Library",
+    "Address":"5137 Salem Road Lithonia, GA 30038 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3097882,33.718128 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Dekalb County Library - Gresham Branch",
+    "Address":"2418 Gresham Road Atlanta, GA 30316 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1422632,33.7457471 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Redan-Trotti Library",
+    "Address":"1569 Wellborn Road Lithonia, GA 30058 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3212594,33.7514318 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Kirkwood Branch Library",
+    "Address":"11 Kirkwood Rd NE Atlanta, GA 30317 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2664307,33.7664314 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 3",
+    "Address":"100 clarendon Avenue Avondale Estates, GA 30002 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.310863,33.835963 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 8",
+    "Address":"2711 Clairmont Road Atlanta, GA 30329 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2756327,33.8115848 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 9",
+    "Address":"3858 North Druid Hills Road Decatur, GA 30033 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.335626,33.9559766 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 12",
+    "Address":"5323 Roberts Drive Dunwoody, GA 30338 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2562357,33.8752491 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 19",
+    "Address":"3253 Mercer university Drive Chamblee, GA 30341 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3108295,33.7200304 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 6",
+    "Address":"2342 Flat Shoals Road Atlanta, GA 30032 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2587044,33.7391842 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 7",
+    "Address":"1776 Derrill Drive Decatur, GA 30032 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3276944,33.800339 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 1",
+    "Address":"1670 Clifton Road Atlanta, GA 30329 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3212103,33.6892303 ]
+    },
+    "properties": {
+    "County":"DeKalb",
+    "Location Name":"Fire Station 10 ",
+    "Address":"1686 Constitution Road Atlanta, GA 30316 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5771689,30.9066897 ]
+    },
+    "properties": {
+    "County":"Decatur",
+    "Location Name":"County Elections Office",
+    "Address":"122 W Water St Bainbridge, GA 39817 ",
+    "Notes":"",
+    "Hours":"Outside the office, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.1754335,32.2009748 ]
+    },
+    "properties": {
+    "County":"Dodge",
+    "Location Name":"",
+    "Address":"5016 Courthouse Cir Eastman, GA 31023 ",
+    "Notes":"",
+    "Hours":"Outside Registrar's office"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7799081,32.0959896 ]
+    },
+    "properties": {
+    "County":"Dooly",
+    "Location Name":"",
+    "Address":"402 Hawkinsville Hwy Vienna, GA 31092 ",
+    "Notes":"",
+    "Hours":"outside Election office 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7954518,32.0915577 ]
+    },
+    "properties": {
+    "County":"Dooly",
+    "Location Name":"",
+    "Address":"102 2d St. Vienna, GA 31902 ",
+    "Notes":"",
+    "Hours":"Outside Courthouse 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1523957,31.5778038 ]
+    },
+    "properties": {
+    "County":"Dougherty",
+    "Location Name":"Government Center",
+    "Address":"222 Pine Ave. Albany, GA 31701 ",
+    "Notes":"",
+    "Hours":"Dropbox outside 24/7, or may drop off inside the office"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1000826,31.5706389 ]
+    },
+    "properties": {
+    "County":"Dougherty",
+    "Location Name":"Tallulah Massey Library",
+    "Address":"2004 Stratford Dr, Albany, GA 31705 Albany, GA 31705 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1713798,31.5497502 ]
+    },
+    "properties": {
+    "County":"Dougherty",
+    "Location Name":"Southside Branch Library",
+    "Address":"2114 Habersham Road Albany, GA 31701 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2109994,31.611336 ]
+    },
+    "properties": {
+    "County":"Dougherty",
+    "Location Name":"Northwest Library",
+    "Address":"2507 Dawson Road Albany, GA 31707 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.8275846,33.6379688 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Dog River Library",
+    "Address":"6100 Hwy 5 Douglasville, GA 30135 ",
+    "Notes":"",
+    "Hours":"Outside but within gate which is open daily \"8 am to dark\""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.6590284,33.6708648 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Boundary Water Aquatic Center",
+    "Address":"5000 Hwy 92 Douglasville, GA 30135 ",
+    "Notes":"",
+    "Hours":"Outside but within gate which is open daily \"from 7 am until dark\""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.6852474,33.7492714 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Deer Lick Park",
+    "Address":"2105 Mack Rd Douglasville, GA 30135 ",
+    "Notes":"",
+    "Hours":"Outside but within gate which is open daily \"7 am-dark\""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.750507,33.749083 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Old Courthouse",
+    "Address":"6754 W. Church Street Douglasville, GA 30134 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7306584,33.7433513 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Douglas County Courthouse",
+    "Address":"8700 Hospital Drive Douglasville, GA 30134 ",
+    "Notes":"",
+    "Hours":"One outside the courthouse 24/7, one inside the building outside of Registrar's office (M-F, 8-5)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.734794,33.7505236 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Douglas County Government Annex",
+    "Address":"6200 Fairburn Road Douglasville, GA 30134 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7523666,33.7430552 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Douglas County Public Library",
+    "Address":"6810 Selman Drive Douglasville, GA 30134 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.6589058,33.7818367 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Lithia Springs Public Library",
+    "Address":"7100 Turner Drive Lithia Springs, GA 30122 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7706408,33.7398238 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Hunter Park",
+    "Address":"8830 Gurley Road Douglasville, GA 30134 ",
+    "Notes":"",
+    "Hours":"Outside but gated park hours are M-F 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7468179,33.7654546 ]
+    },
+    "properties": {
+    "County":"Douglas",
+    "Location Name":"Jesse Davis Park",
+    "Address":"7775 Malone Street Douglasville, GA 30134 ",
+    "Notes":"",
+    "Hours":"Outside but gated park hours are M-Sat. 8-8:30, Sun. 1-8:30"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9332588,31.3784353 ]
+    },
+    "properties": {
+    "County":"Early",
+    "Location Name":"",
+    "Address":"17 McDonald Avenue Blakely, GA 39823 ",
+    "Notes":"",
+    "Hours":"Outside on west side of building, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.0277878,30.7030084 ]
+    },
+    "properties": {
+    "County":"Echols",
+    "Location Name":"",
+    "Address":"110 GA-94 Statenville, GA 31648 ",
+    "Notes":"",
+    "Hours":"outside Registrar's office in courthouse building 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.3166038,32.3684649 ]
+    },
+    "properties": {
+    "County":"Effingham",
+    "Location Name":"",
+    "Address":"284 GA Highway 119 S Springfield, GA 31329 ",
+    "Notes":"",
+    "Hours":"outside in front of building 24/7, and just inside building door 8:30-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.8687314,34.1099645 ]
+    },
+    "properties": {
+    "County":"Elbert",
+    "Location Name":"",
+    "Address":"45 Forest Avenue Elberton, GA 30635 ",
+    "Notes":"",
+    "Hours":"on the wall in entryway to building, outside entrance to Registrar's office, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3338182,32.5971822 ]
+    },
+    "properties": {
+    "County":"Emanuel",
+    "Location Name":"Elections Office",
+    "Address":"105 South Main St Swainsboro, GA 30401 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"next to tag office, M-F 8-12, 1-5, but during early voting period (10/12 to 30) office open 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.9074901,32.1618096 ]
+    },
+    "properties": {
+    "County":"Evans",
+    "Location Name":"Courthouse",
+    "Address":"201 Freeman Street, Suite 10 Claxton, GA 30417 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3266764,34.8644888 ]
+    },
+    "properties": {
+    "County":"Fannin",
+    "Location Name":"Elections Office",
+    "Address":"400 W Main St. Blue Ridge, GA 30513 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4570558,33.4470043 ]
+    },
+    "properties": {
+    "County":"Fayette",
+    "Location Name":"Fayette County Administrative Complex near Heritage Park Fountain",
+    "Address":"140 Stonewall Ave W, Ste 208 Fayetteville, GA 30214 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.580643,33.400401 ]
+    },
+    "properties": {
+    "County":"Fayette",
+    "Location Name":"Peachtree City Public Library (back of building on ground floor)",
+    "Address":"201 Willowbend Road Peachtree City, GA 30269 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5944278,33.4781168 ]
+    },
+    "properties": {
+    "County":"Fayette",
+    "Location Name":"Tyrone Police Department",
+    "Address":"945 Senoia Road Tyrone, GA 30290 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4592086,33.2899185 ]
+    },
+    "properties": {
+    "County":"Fayette",
+    "Location Name":"Brooks Town Hall",
+    "Address":"961 Highway 85 Connector Brooks Brooks, GA 30205 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.171347,34.2538103 ]
+    },
+    "properties": {
+    "County":"Floyd",
+    "Location Name":"Elections Office",
+    "Address":"12 E Fourth Ave, Ste 20 Rome, GA 30161 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.1690793,34.2580521 ]
+    },
+    "properties": {
+    "County":"Floyd",
+    "Location Name":"Sara Hightower Library",
+    "Address":"205 Riverside Parkway NE Rome, GA 30161 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1410259,34.2237553 ]
+    },
+    "properties": {
+    "County":"Forsyth",
+    "Location Name":"Elections Office",
+    "Address":"1201 Sawnee Drive Cumming, GA 30040 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.2311314,34.3670106 ]
+    },
+    "properties": {
+    "County":"Franklin",
+    "Location Name":"",
+    "Address":"7850 Royston Road Carnesville, GA 30521 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4616893,33.7056988 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Adams Park Library",
+    "Address":"2231 Campbellton Road Atlanta, GA 30311 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5001855,33.7550563 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Adamsville/Collier Heights Library",
+    "Address":"3424 Martin Luther King Jr Drive Atlanta, GA 30331 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2922893,34.0739169 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Alpharetta Branch Library",
+    "Address":"10 Park Plaza Alpharetta, GA 30009 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3838928,33.7552257 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Auburn Avenue Research Library",
+    "Address":"101 Auburn Avenue Atlanta, GA 30303 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3793961,33.8376168 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Buckhead Library",
+    "Address":"269 Buckhead Avenue, NE Atlanta, GA 30305 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3905475,33.6815073 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Cleveland Avenue Library",
+    "Address":"47 Cleveland Avenue SW Atlanta, GA 30315 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4496948,33.6556682 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"College Park Branch Library",
+    "Address":"3647 Main Street College Park, GA 30337 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4470085,33.7740654 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Dogwood Library",
+    "Address":"1838 Donald Lee Hollowell Parkway Atlanta, GA 30318 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4406947,33.6803507 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"East Point Branch Library",
+    "Address":"2757 Main Street East Point, GA 30344 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2944889,34.0029406 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"East Roswell Branch Library",
+    "Address":"2301 Holcomb Bridge Road Roswell, GA 30076 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.506737,33.7246153 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Evelyn G. Lowery @ Cascade",
+    "Address":"3665 Cascade Road, SW Atlanta, GA 30331 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.584977,33.5668373 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Fairburn Branch Library",
+    "Address":"60 Valley View Drive Fairburn, GA 30213 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5174078,33.7741869 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Fulton County Airport:",
+    "Address":"3929 Aviation Circle, Suite A Atlanta, GA 30336 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3010265,34.0631453 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Fulton County Customer Service Cetner @ Maxwell Road",
+    "Address":"11575 Maxwell Road Alpharetta, GA 30009 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3914433,33.751422 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Fulton County Government Center (1)",
+    "Address":"141 Pryor Street, SW Atlanta, GA 30303 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3919022,33.751259 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Fulton County Government Center (2)",
+    "Address":"130 Peachtree Street, SW Atlanta, GA 30303 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5195155,33.5878106 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Gladys S. Dennard Library @ South Fulton",
+    "Address":"4055 Flat Shoals Road Union City, GA 30291 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4047089,33.6590228 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Hapeville Senior Center",
+    "Address":"527 King Arnold Street Hapeville, GA 30354 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2668915,33.9769675 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Johns Creek Environmental Campus",
+    "Address":"8100 Holcomb Bridge Road Alpharetta, GA 30022 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3940779,33.7149301 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Louise Watley Library at Southeast Atlanta",
+    "Address":"1463 Pryor Road, SW Atlanta, GA 30315 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3948579,33.7437344 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Mechanicsville Library",
+    "Address":"400 Formwalt Street Atlanta, GA 30312 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4073494,33.7187799 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Metropolitan Branch Library",
+    "Address":"1332 Metropolitan Parkway Atlanta, GA 30310 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3362718,34.0901142 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Milton Branch Library",
+    "Address":"855 Mayfield Road Milton, GA 30009 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3626663,33.965673 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"North Fulton Service Center",
+    "Address":"7741 Roswell Road Sandy Springs, GA 30350 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.380667,33.892322 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"North Training Center",
+    "Address":"5025 Roswell Road Sandy Springs, GA 30342 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2242155,34.01417 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Northeast /Spruill Oaks Library",
+    "Address":"9560 Spruill Road Alpharetta, GA 30022 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4253497,33.845106 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Northside Library",
+    "Address":"3295 Northside Parkway, NW Atlanta, GA 30327 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4699555,33.8052817 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Northwest Branch Library @ Scott’s Crossing",
+    "Address":"2489 Perry Boulevard, NW Atlanta, GA 30318 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.6643812,33.5305862 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Palmetto Branch Library",
+    "Address":"9111 Cascade Palmetto Highway Palmetto, GA 30268 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3551871,33.7740557 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Ponce De Leon Library",
+    "Address":"980 Ponce De Leon Ave NE Atlanta, GA 30306 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2096406,34.0646462 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Robert E. Fulton Regional Library @ Ocee",
+    "Address":"5090 Abbotts Bridge Road Johns Creek, GA 30005 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3579018,34.0249952 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Roswell Branch Library",
+    "Address":"115 Norcross Street Roswell, GA 30075 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.37442,33.924002 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Sandy Springs Branch Library",
+    "Address":"395 Mt Vernon Highway, NE Sandy Springs, GA 30328 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5498808,33.6014156 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"South Fulton Service Center",
+    "Address":"5600 Stonewall Tell Road College Park, GA 30349 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4237293,33.7541519 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Washington Park Library",
+    "Address":"1116 Martin Luther King Jr Drive Atlanta, GA 30314 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4209185,33.7403435 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"West End Library",
+    "Address":"525 Peeples Street SW Atlanta, GA 30310 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5741367,33.6725152 ]
+    },
+    "properties": {
+    "County":"Fulton",
+    "Location Name":"Wolf Creek Branch Library",
+    "Address":"3100 Enon Road Atlanta, GA 30331 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4833347,34.695096 ]
+    },
+    "properties": {
+    "County":"Gilmer",
+    "Location Name":"Gilmer County Courthouse",
+    "Address":"1 Broad St, Suite 107 Ellijay, GA 30540 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.6069682,33.2313399 ]
+    },
+    "properties": {
+    "County":"Glascock",
+    "Location Name":"",
+    "Address":"676 West Main Street Gibson, GA 30810 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.4849575,31.1521128 ]
+    },
+    "properties": {
+    "County":"Glynn",
+    "Location Name":"Board of Elections and Registration Office (outside door)",
+    "Address":"1815 Gloucester Street Brunswick, GA 31520 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.950193,34.502562 ]
+    },
+    "properties": {
+    "County":"Gordon",
+    "Location Name":"Gordon County Annex Building",
+    "Address":"101 S. Piedmont Street Calhoun, GA 30103 ",
+    "Notes":"",
+    "Hours":"Behind courthouse left side front porch, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2077052,30.8786337 ]
+    },
+    "properties": {
+    "County":"Grady",
+    "Location Name":"",
+    "Address":"250 N. Broad St. Cairo, GA 39828 ",
+    "Notes":"",
+    "Hours":"At courthouse. Drive up drop box.24/7. Signs indicate location"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.193402,33.566131 ]
+    },
+    "properties": {
+    "County":"Greene",
+    "Location Name":"",
+    "Address":"1180 C Weldon Smith Drive Suite 120 Greensboro, GA 30642 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure box in lobby 8-5, M-F, in same building as Drivers Services"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.985209,33.9390129 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Voter Registration and Elections Bldg.",
+    "Address":"455 Grayson Hwy Suite 200 Lawrenceville, GA 30045 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1471048,33.9739116 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Shorty Howell Park Activity Bldg",
+    "Address":"2750 Pleasant Hill Rd. Duluth, GA 30096 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1332894,33.8450891 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Mountain Park Acquatic Ctr",
+    "Address":"1063 Rockbridge Rd. SW Stone Mtn, GA 30087 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1971694,33.8805852 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Lucky Shoals Park Community Ctr",
+    "Address":"4651 Britt Rd Norcross, GA 30093 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0015384,33.7911207 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Lenora Park Gym",
+    "Address":"4515 Lenora Church Rd. Snellville, GA 30039 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0616643,34.0600151 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"George Pierce Park Community Ctr.",
+    "Address":"55 Buford Hwy Suwanee, GA 30024 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.892831,33.9961061 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Dacula Park Activity Bldg.",
+    "Address":"2735 Old Auburn Ave. Dacula, GA 30019 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9691803,34.1072984 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Bogan Park Community Center",
+    "Address":"2723 N. Bogan Rd NE Buford, GA 30519 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0146768,33.9423194 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Lawrenceville Library",
+    "Address":"1001 Lawrenceville Highway Lawrenceville, GA 30046 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0549833,33.8933852 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Five Forks Library",
+    "Address":"2780 Five Forks Trickum Road Lawrenceville, GA 30044 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8990191,33.9942225 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Dacula Library",
+    "Address":"265 Dacula Road Dacula, GA 30019 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9024749,34.0694822 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Hamilton Mill Library",
+    "Address":"3690 Braselton Highway Dacula, GA 30019 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0022821,34.0154735 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Collins Hill Library",
+    "Address":"455 Camp Perrin Road Lawrenceville, GA 30043 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0000921,34.1105116 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Buford-Sugar Hill Library",
+    "Address":"2100 Buford Highway Buford, GA 30518 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0672021,34.0576444 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Suwanee Library",
+    "Address":"361 Main Street Suwanee, GA 30024 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1596078,34.0011438 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Duluth Library",
+    "Address":"3840 Duluth Park Lane Duluth, GA 30096 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2243393,33.9695118 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Peachtree Corners Library",
+    "Address":"5570 Spalding Drive Peachtree Corners, GA 30092 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2179579,33.9345278 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Norcross Library",
+    "Address":"6025 Buford Highway Norcross, GA 30071 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1389273,33.8921392 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Lilburn Library",
+    "Address":"4817 Church Street NW Lilburn, GA 30047 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1203004,33.8472957 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Mountain Park Library",
+    "Address":"1210 Pounds Road Lilburn, GA 30047 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0495336,33.8168294 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Centerville Library",
+    "Address":"3025 Bethany Church Road Snellville, GA 30039 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0128178,33.8444748 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Snellville Library",
+    "Address":"2740 Lenora Church Road Snellville, GA 30078 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9635945,33.8885986 ]
+    },
+    "properties": {
+    "County":"Gwinnett",
+    "Location Name":"Grayson Library",
+    "Address":"700 Grayson Parkway Grayson, GA 30017 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.505455,34.6065025 ]
+    },
+    "properties": {
+    "County":"Habersham",
+    "Location Name":"",
+    "Address":"130 Jacob's Way, Ste 101 Clarkesville, GA 30523 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Drop off in person at office"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8770372,34.2776013 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"County Government Center",
+    "Address":"2875 Browns Bridge Rd Gainesville, GA 30504 ",
+    "Notes":"",
+    "Hours":"The box is located in front of the Government Center so that people can drive up, left lane under overhang and drop in the ballot 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8200754,34.2390953 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"Chicopee Woods Agricultural Center Activity Hall",
+    "Address":"1855 Calvary Church Rd. Gainesville, GA 30507 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8281006,34.3007874 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"City of Gainesville Downtown Building (old Turner Wood and Smith building)",
+    "Address":"100 Brenau Ave. Gainesville, GA 30501 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7364324,34.3185624 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"East Hall Community Center",
+    "Address":"3911 P. Davidson Rd. Gainesville, GA 30507 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8760435,34.1837656 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"Mulberry Creek Community Center",
+    "Address":"4491 J.M. Turk Rd. Flowery Branch, GA 30542 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8911131,34.2516652 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"Mundy Mill Precinct",
+    "Address":"4335 Mundy Mill Road Oakwood, GA 30566 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8911545,34.4016618 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"Murrayville Library",
+    "Address":"4796 Thompson Bridge Rd. Gainesville, GA 30506 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7980159,34.4056889 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"North Hall Community Center",
+    "Address":"4175 Nopone Rd. Gainesville, GA 30506 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.894341,34.1522456 ]
+    },
+    "properties": {
+    "County":"Hall",
+    "Location Name":"Spout Springs Library",
+    "Address":"6488 Spout Springs Rd. Flowery Branch, GA 30542 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Secure metal dropboxes inside to drop ballots and applications from October 12-30 (M-F), and Saturday, October 24 7am-7pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.9698768,33.275867 ]
+    },
+    "properties": {
+    "County":"Hancock",
+    "Location Name":"",
+    "Address":"9091 East Broad Street, P.O. Box 118 Sparta, GA 31087 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.1817572,33.8020262 ]
+    },
+    "properties": {
+    "County":"Haralson",
+    "Location Name":"Haralson County Courthouse",
+    "Address":"4485 Ga. Hwy 120 Buchanan, GA 30113 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Metal box in lobby on the left in front of security office. Avail 8:30-5:00 M-F. Courthouse is located near Veterans Park on Hwy 120 near Hwy 27"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.8748921,32.7584146 ]
+    },
+    "properties": {
+    "County":"Harris",
+    "Location Name":"Board of Elections",
+    "Address":"104 N. College St. Hamilton, GA 31811 ",
+    "Notes":"",
+    "Hours":"Drop ballots and apps 24/7 on porch in slot on wall of building. Ballots fall into container in office of registrar. Elections Office is next to courthouse in town."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.9404506,34.3468124 ]
+    },
+    "properties": {
+    "County":"Hart",
+    "Location Name":"Elections Office",
+    "Address":"182 Cade Street, Suite B Hartwell, GA 30643 ",
+    "Notes":"",
+    "Hours":"outside, 24-7; in front of Elections Office door, across from hospital (green box with white lid)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.930786,34.3497926 ]
+    },
+    "properties": {
+    "County":"Hart",
+    "Location Name":"Hart County Library (Basement)",
+    "Address":"150 Benson Street Hartwell, GA 30643 ",
+    "Notes":"",
+    "Hours":"Indoors, M-F 8 AM- 5PM thru October 30th, and Saturday Oct. 24th 9AM-4 PM] (same location as early voting)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.0979229,33.2793166 ]
+    },
+    "properties": {
+    "County":"Heard",
+    "Location Name":"Elections Office",
+    "Address":"215 East Court Sq. Franklin, GA 30217 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Ballots and Applications accepted. Open M-F, 8:30-5.  Drive to curb on the backside of the courthouse and employee will come out to get your ballot (they see drivers pull up). No need to get out of car. Ballot immediately processed (not tallied) and placed in lock box in office- voter can confirm on My Voter Page."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1477595,33.4489186 ]
+    },
+    "properties": {
+    "County":"Henry",
+    "Location Name":"Henry County Elections and Registration Office",
+    "Address":"40 Atlanta St. McDonough, GA 30253 ",
+    "Notes":"",
+    "Hours":"Outside 24-7. In front of Elections Office front door. Can submit applications and ballots"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6638884,32.5967344 ]
+    },
+    "properties": {
+    "County":"Houston",
+    "Location Name":"Houston County Annex",
+    "Address":"200 Carl Vinson Pkwy Warner Robins, GA 31088 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Lobby (8:30 a.m. – 5:00 p.m. M-F and Election Day 7:00 a.m. – 7:00 p.m.)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7338179,32.4578075 ]
+    },
+    "properties": {
+    "County":"Houston",
+    "Location Name":"Board of Elections",
+    "Address":"801 Main St. Perry, GA 31069 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Lobby (8:00 a.m. – 5:00 p.m. M-F and Election Day 7:00 a.m. – 7:00 p.m.)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6434882,32.6203105 ]
+    },
+    "properties": {
+    "County":"Houston",
+    "Location Name":"Houston Health Pavilion Conference Center - Cary W. Martin Conference Center",
+    "Address":"233 N. Houston Road Warner Robins, GA 31093 ",
+    "Notes":"",
+    "Hours":"8:00 am – 5:00 pm. M-F, and Election Day 7:00 am – 7:00 pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.2503587,31.5996897 ]
+    },
+    "properties": {
+    "County":"Irwin",
+    "Location Name":"",
+    "Address":"507-C North Irwin Ave Ocilla, GA 31774 ",
+    "Notes":"",
+    "Hours":"Dropbox in front of Elections Office; Outdoor, 24-7; monitored"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.5679428,34.112299 ]
+    },
+    "properties": {
+    "County":"Jackson",
+    "Location Name":"County Elections Office (outside)",
+    "Address":"441 Gordon Street Jefferson, GA 30549 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4351521,34.1075006 ]
+    },
+    "properties": {
+    "County":"Jackson",
+    "Location Name":"Nicholson City Hall",
+    "Address":"5488 US 441 S Nicholson, GA 30565 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.760981,34.1054644 ]
+    },
+    "properties": {
+    "County":"Jackson",
+    "Location Name":"West Jackson Fire Dept, Station 1",
+    "Address":"69 W Jackson Road Braselton, GA 30517 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6836647,33.3049052 ]
+    },
+    "properties": {
+    "County":"Jasper",
+    "Location Name":"Courthouse",
+    "Address":"126 W Greene St, Ste. #3 Monticello, GA 31064 ",
+    "Notes":"",
+    "Hours":"Outdoor, 24-7.  In alley between courthouse and Five Loaves Restaurant.  Can drop into box from passenger side of the car, or walk up to box. Second location is in the door near front of Registrar's Office; ballots drop into a locked box"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.6008108,31.8626007 ]
+    },
+    "properties": {
+    "County":"Jeff Davis",
+    "Location Name":"",
+    "Address":"14 Jeff Davis Street, Ste. 107 Hazlehurst, GA 31539 ",
+    "Notes":"",
+    "Hours":"Outside Courthouse, 24-7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.4097651,32.9982877 ]
+    },
+    "properties": {
+    "County":"Jefferson",
+    "Location Name":"Elections Office",
+    "Address":"415 Green Street Louisville, GA 30434 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Outdoor dropoff (24-7): Mailslot in front door, ballots drop into locked box; Inside dropoff: M-F, 8-5 (Applications and Ballots accepted.)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3850704,33.2091385 ]
+    },
+    "properties": {
+    "County":"Jefferson",
+    "Location Name":"Wrens City Hall ",
+    "Address":"401 Broad St Wrens, GA 30833 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.4047652,32.8629072 ]
+    },
+    "properties": {
+    "County":"Jefferson",
+    "Location Name":"Wadley City Hall",
+    "Address":"37 Butts Street Wadley, GA 30477 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.939111,32.8043101 ]
+    },
+    "properties": {
+    "County":"Jenkins",
+    "Location Name":"Elections Office, Courthouse",
+    "Address":"611 E. Winthrope Ave. Millen, GA 30442 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Come in the back door of the courthouse. Submit at a table set up there. M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.7216898,32.7291961 ]
+    },
+    "properties": {
+    "County":"Johnson",
+    "Location Name":"Elections Office",
+    "Address":"2484 W. Elm St. Wrightsville, GA 31096 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Inside, M-F, 8-4:30"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.5347772,33.0213405 ]
+    },
+    "properties": {
+    "County":"Jones",
+    "Location Name":"Government Center",
+    "Address":"166 Industrial Blvd. Gray, GA 31032 ",
+    "Notes":"",
+    "Hours":"Touchless white security box, 24-7 security, outside right side of building."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1566606,33.0513786 ]
+    },
+    "properties": {
+    "County":"Lamar",
+    "Location Name":"",
+    "Address":"408 Thomaston Street Suite D Barnesville, GA 30204 ",
+    "Notes":"",
+    "Hours":"Drop off inside office or outside in the drop box"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.0900108,31.0421464 ]
+    },
+    "properties": {
+    "County":"Lanier",
+    "Location Name":"Elections Office",
+    "Address":"162 W. Thigpen Ave. Lakeland, GA 31635 ",
+    "Notes":"",
+    "Hours":"Dropbox outside 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.9038138,32.5402224 ]
+    },
+    "properties": {
+    "County":"Laurens",
+    "Location Name":"Registar's Office",
+    "Address":"117 E Jackson Street, Ste. A Dublin, GA 31021 ",
+    "Notes":"",
+    "Hours":"Across from Courthouse, drop boxes outside 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.1676091,31.7317509 ]
+    },
+    "properties": {
+    "County":"Lee",
+    "Location Name":"Elections Office",
+    "Address":"100 Starksville Avenue North, Suite C Leesburg, GA 31763 ",
+    "Notes":"",
+    "Hours":"24/7 outside office"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.5958405,31.847577 ]
+    },
+    "properties": {
+    "County":"Liberty",
+    "Location Name":"Liberty County Elections Board",
+    "Address":"100 N. Main St., Suite 1600 Hinesville, GA 31313 ",
+    "Notes":"",
+    "Hours":"Outside elections office, around the corner to the right on Midway Street across from German Restaurant, 24/7; Can also leave at office M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.3951491,31.7820055 ]
+    },
+    "properties": {
+    "County":"Liberty",
+    "Location Name":"Midway City Hall",
+    "Address":"41 Charlie Butler Avenue Midway, GA 31320 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.4761641,33.7871374 ]
+    },
+    "properties": {
+    "County":"Lincoln",
+    "Location Name":"Lincoln Center",
+    "Address":"160 May Ave Lincolnton, GA 30817 ",
+    "Notes":"",
+    "Hours":"Dropbox outside 24/7, no person-to-person contact"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.7415048,31.7077673 ]
+    },
+    "properties": {
+    "County":"Long",
+    "Location Name":"Elections Office",
+    "Address":"459 S McDonald St Ludowici, GA 31316 ",
+    "Notes":"",
+    "Hours":"24hr with camera, outside the building"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.2926145,30.870364 ]
+    },
+    "properties": {
+    "County":"Lowndes",
+    "Location Name":"",
+    "Address":"2808 N. Oak St Valdosta, GA 31601 ",
+    "Notes":"",
+    "Hours":"24/7 cameras, outside of building"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9816648,34.5345622 ]
+    },
+    "properties": {
+    "County":"Lumpkin",
+    "Location Name":"",
+    "Address":"56 Short Street Dahlonega, GA 30533 ",
+    "Notes":"",
+    "Hours":"Outside the front door, but only open when the office is open. M-F 8a-5p, open 7-7 on 11/3"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0597308,32.2949872 ]
+    },
+    "properties": {
+    "County":"Macon",
+    "Location Name":"Elections Office",
+    "Address":"100 Macon St. Oglethorpe, GA 31068 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7, with camera"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.2212629,34.1242771 ]
+    },
+    "properties": {
+    "County":"Madison",
+    "Location Name":"County Board of Elections Office",
+    "Address":"94 Spring Lake Drive, P.O. Box 328 Danielsville, GA 30633 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7, with camera"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5178695,32.3236113 ]
+    },
+    "properties": {
+    "County":"Marion",
+    "Location Name":"Elections Office",
+    "Address":"100 E. Burkhalter Ave Buena Vista, GA 31803 ",
+    "Notes":"",
+    "Hours":"24-7 outside"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.5048414,33.4697167 ]
+    },
+    "properties": {
+    "County":"McDuffie",
+    "Location Name":"Elections Office",
+    "Address":"337 Main Street, Suite 101 Thomson, GA 30824 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7, with camera"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3844481,33.4129757 ]
+    },
+    "properties": {
+    "County":"McDuffie",
+    "Location Name":"Dearing Community Center",
+    "Address":"4614 Augusta highway Dearing, GA 30808 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7, with camera"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.4336597,31.3714463 ]
+    },
+    "properties": {
+    "County":"McIntosh",
+    "Location Name":"",
+    "Address":"103 Jefferson St Darian, GA 31305 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7132083,33.0279407 ]
+    },
+    "properties": {
+    "County":"Meriwether",
+    "Location Name":"Elections Office",
+    "Address":"137 South Court Square Greenville, GA 30222 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Deliver inside office, 8:30 - 5:00 M-F"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7339233,31.1717442 ]
+    },
+    "properties": {
+    "County":"Miller",
+    "Location Name":"Courthouse",
+    "Address":"155 South 1st Street Colquitt, GA 39837 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Inside, 9:00-5:00 M-F"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2025988,31.2304528 ]
+    },
+    "properties": {
+    "County":"Mitchell",
+    "Location Name":"Board of Elections",
+    "Address":"32 North Court Street Camilla, GA 31730 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2088341,31.2377122 ]
+    },
+    "properties": {
+    "County":"Mitchell",
+    "Location Name":"Courthouse",
+    "Address":"214 N. Harney St. Camilla, GA 31730 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9396504,33.0339594 ]
+    },
+    "properties": {
+    "County":"Monroe",
+    "Location Name":"TAG Office",
+    "Address":"38 West Main Street Forsyth, GA 31029 ",
+    "Notes":"",
+    "Hours":"Drive through access, may also dropoff inside office"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.5946873,32.1742409 ]
+    },
+    "properties": {
+    "County":"Montgomery",
+    "Location Name":"Courthouse",
+    "Address":"400 South Railroad Ave. Mt. Vernon, GA 30445 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Inside, ADA compliant 8:30 - 5:00 M-F"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4651337,33.5967978 ]
+    },
+    "properties": {
+    "County":"Morgan",
+    "Location Name":"",
+    "Address":"434 Hancock St Madison, GA 30650 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7714564,34.7670651 ]
+    },
+    "properties": {
+    "County":"Murray",
+    "Location Name":"Murray County Annex Building",
+    "Address":"121 N. 4th Ave. Chatsworth, GA 30705 ",
+    "Notes":"",
+    "Hours":"Building is behind the courthouse, drop box built into the brick wall: ADA compliant"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9455123,32.4764568 ]
+    },
+    "properties": {
+    "County":"Muscogee",
+    "Location Name":"Citizens Service Center",
+    "Address":"3111 Citizens Way Columbus, GA 31906 ",
+    "Notes":"",
+    "Hours":"One box at Main entrance, one drive up box"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9457794,32.4260548 ]
+    },
+    "properties": {
+    "County":"Muscogee",
+    "Location Name":"Frank D. Chester Recreation Center",
+    "Address":"1441 Benning Dr Columbus, GA 31903 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9634203,32.5249867 ]
+    },
+    "properties": {
+    "County":"Muscogee",
+    "Location Name":"Columbus Health Department Building",
+    "Address":"5601 Veterans Pkwy Columbus, GA 31904 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8589655,33.5978834 ]
+    },
+    "properties": {
+    "County":"Newton",
+    "Location Name":"Newton County Administration Building",
+    "Address":"1113 Usher St. Covington, GA 30014 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Park in the parking deck, and the dropbox is outside the back entrance of the Administration Building. At the top of the steps by handicap parking and ramp. Applications and ballots may be dropped off inside the office at this location - Hours: 8:00-5:00, Mon-Fri. Enter through either entrance. Applications for ballots can be left in this box."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.970284,33.5940348 ]
+    },
+    "properties": {
+    "County":"Newton",
+    "Location Name":"West Side Precinct Sherriff's Office",
+    "Address":"3612 Salem Road Covington, GA 30016 ",
+    "Notes":"",
+    "Hours":"INSIDE, 8-4:30, M-F"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4451454,33.9416194 ]
+    },
+    "properties": {
+    "County":"Oconee",
+    "Location Name":"Board of Elections Office",
+    "Address":"10 Court St Watkinsville, GA 30677 ",
+    "Notes":"",
+    "Hours":"Next to the Courthouse: for applications and ballots, with 24/7 surveillance. Box checked three times daily"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.101717,33.88979 ]
+    },
+    "properties": {
+    "County":"Oglethorpe",
+    "Location Name":"Elections Office",
+    "Address":"41 Fairground Road Lexington, GA 30648 ",
+    "Notes":"",
+    "Hours":"\"Mail Slot\" in wall, available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7608518,33.8760132 ]
+    },
+    "properties": {
+    "County":"Paulding",
+    "Location Name":"Hiram City Hall/Police Station",
+    "Address":"217 Main St. Hiram, GA 30141 ",
+    "Notes":"",
+    "Hours":"Drop box OUTSIDE 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.8475077,33.9171274 ]
+    },
+    "properties": {
+    "County":"Paulding",
+    "Location Name":"Elections Office",
+    "Address":"240 Constitution Blvd. Dallas, GA 30132 ",
+    "Notes":"",
+    "Hours":"Outside the Administration Bldg., which is part of the Watson Government Complex and Courthouse, facing the clock tower. OUTSIDE Dropbox with security 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7790009,34.0505524 ]
+    },
+    "properties": {
+    "County":"Paulding",
+    "Location Name":"Crossroads Public Library",
+    "Address":"909 Harmony Grove Church Road Acworth, GA 30101 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8880912,32.5533714 ]
+    },
+    "properties": {
+    "County":"Peach",
+    "Location Name":"Courthouse",
+    "Address":"205 W Church St, Suite 102 Fort Valley, GA 31030 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Inside: 8-5 M-F; Sat. 10/24, 9-4"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.762032,32.6541746 ]
+    },
+    "properties": {
+    "County":"Peach",
+    "Location Name":"Byron Sheriff's Dept",
+    "Address":"401 Main St Byron, GA 31008 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"INSIDE 8-5 M-F"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4275446,34.4706207 ]
+    },
+    "properties": {
+    "County":"Pickens",
+    "Location Name":"Elections Office",
+    "Address":"83 Pioneer Road Jasper, GA 30143 ",
+    "Notes":"",
+    "Hours":"Outside, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.2339661,31.3036522 ]
+    },
+    "properties": {
+    "County":"Pierce",
+    "Location Name":"Elections Office, Pierce County Courthouse-Annex II (1)",
+    "Address":"312 Nichols St, Suite 2 Blackshear, GA 31516 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Dropbox is right INSIDE glass entry doors, Hours: 8-5 M-F, and Sat. Oct. 24, 08:30-5. Can drop both Applications and Ballots in box."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.2339661,31.3036522 ]
+    },
+    "properties": {
+    "County":"Pierce",
+    "Location Name":"Elections Office, Pierce County Courthouse-Annex II (2)",
+    "Address":"312 Nichols St, Suite 2 Blackshear, GA 31516 ",
+    "Notes":"",
+    "Hours":"Dropbox is outside main entrance to building"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.342514,33.103071 ]
+    },
+    "properties": {
+    "County":"Pike",
+    "Location Name":"Board of Elections/Registrar's Office",
+    "Address":"81 Jackson St Zebulon, GA 30295 ",
+    "Notes":"",
+    "Hours":"Dropbox OUTSIDE, 24/7 for Ballots only"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.2564811,34.0114711 ]
+    },
+    "properties": {
+    "County":"Polk",
+    "Location Name":"",
+    "Address":"144 West Avenue, Ste D Cedartown, GA 30125 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4689397,32.2823821 ]
+    },
+    "properties": {
+    "County":"Pulaski",
+    "Location Name":"Courthouse Annex",
+    "Address":"45 S. Lumpkin St. Hawkinsville, GA 31036 ",
+    "Notes":"",
+    "Hours":"The drop box is at the front of the Courthouse Annex under the canopy."
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3886625,33.3258952 ]
+    },
+    "properties": {
+    "County":"Putnam",
+    "Location Name":"Courthouse building (1)",
+    "Address":"100 S Jefferson Ave Eatontown, GA 31024 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"In the hallway outside the elections office, M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3886625,33.3258952 ]
+    },
+    "properties": {
+    "County":"Putnam",
+    "Location Name":"Courthouse building (2)",
+    "Address":"100 S Jefferson Ave Eatontown, GA 31024 ",
+    "Notes":"",
+    "Hours":"On the backside of the building, near handicap ramp - 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.1074308,31.884605 ]
+    },
+    "properties": {
+    "County":"Quitman",
+    "Location Name":"Probate court",
+    "Address":"46 Old School Rd Georgetown, GA 39854 ",
+    "Notes":"",
+    "Hours":"Fastened to wall outside building, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.4040076,34.8794372 ]
+    },
+    "properties": {
+    "County":"Rabun",
+    "Location Name":"Elections Office",
+    "Address":"18 Old Raca High Drive, Suite 105 Clayton, GA 30525 ",
+    "Notes":"",
+    "Hours":"On covered porch outside; one box for applications, one box for ballots, available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7868807,31.7667191 ]
+    },
+    "properties": {
+    "County":"Randolph",
+    "Location Name":"Elections Office",
+    "Address":"93 Front Street Cuthbert, GA 39840 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"2 separate chutes on a wall inside the office - one for applications and one for ballots; M-F, 8-5 and 10/24/20 during early voting"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.0576963,33.5062214 ]
+    },
+    "properties": {
+    "County":"Richmond",
+    "Location Name":"Warren Road Recreation Center",
+    "Address":"300 Warren Rd. Augusta, GA 30907 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.0519763,33.4297233 ]
+    },
+    "properties": {
+    "County":"Richmond",
+    "Location Name":"Henry Brigham Community Center",
+    "Address":"2463 Golden Camp Road C Augusta, GA 30906 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.0938189,33.3532051 ]
+    },
+    "properties": {
+    "County":"Richmond",
+    "Location Name":"Diamond Lakes Regional Park",
+    "Address":"4335 Windsor Spring Rd. Hephzibah, GA 30815 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.9617403,33.4712263 ]
+    },
+    "properties": {
+    "County":"Richmond",
+    "Location Name":"Municipal Building",
+    "Address":"535 Telfair St. Augusta, GA 30901 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0216883,33.6572916 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"Rockdale County Board of Elections Office",
+    "Address":"1261 Commercial Drive SW Suite B Conyers, GA 30094 ",
+    "Notes":"",
+    "Hours":"Outside the door to the election commission office"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0210591,33.564003 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"",
+    "Address":"778 Bell Road Conyers, GA 30094 ",
+    "Notes":"",
+    "Hours":"Outside firestation, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9964351,33.6239351 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"",
+    "Address":"2450 Old Salem Road Conyers, GA 30013 ",
+    "Notes":"",
+    "Hours":"Outside firestation, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.138175,33.5936536 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"",
+    "Address":"3601 Union Church Road Stockbridge, GA 30281 ",
+    "Notes":"",
+    "Hours":"Outside firestation, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9762037,33.7332243 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"",
+    "Address":"2100 West Hightower Trail Conyers, GA 30012 ",
+    "Notes":"",
+    "Hours":"Outside firestation, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0762423,33.6622311 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"",
+    "Address":"2681 Hurst Road Conyers, GA 30094 ",
+    "Notes":"",
+    "Hours":"Outside firestation, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0305383,33.6824686 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"",
+    "Address":"1496 Rockbridge Road Conyers, GA 30012 ",
+    "Notes":"",
+    "Hours":"Outside firestation, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.0536209,33.6209239 ]
+    },
+    "properties": {
+    "County":"Rockdale",
+    "Location Name":"",
+    "Address":"2009 Walker Road Conyers, GA 30094 ",
+    "Notes":"",
+    "Hours":"Outside firestation, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.310852,32.2387093 ]
+    },
+    "properties": {
+    "County":"Schley",
+    "Location Name":"",
+    "Address":"47 N Pecan Street Ellaville, GA 31806 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.6451742,32.7509161 ]
+    },
+    "properties": {
+    "County":"Screven",
+    "Location Name":"Screven County Courthouse",
+    "Address":"216 Mims Road, Rm 114 Sylvania, GA 30467 ",
+    "Notes":"",
+    "Hours":"Dropbox located at the back of the Commissioner's Office down the driveway between the Police Station and the Courthouse, available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.884838,31.0418397 ]
+    },
+    "properties": {
+    "County":"Seminole",
+    "Location Name":"Probate Office",
+    "Address":"200 S Knox Ave Donalsonville, GA 39845 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2496589,33.2443807 ]
+    },
+    "properties": {
+    "County":"Spalding",
+    "Location Name":"",
+    "Address":"825 Memorial Drive Griffin, GA 30223 ",
+    "Notes":"",
+    "Hours":"Outside the courthouse, available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3279544,34.5805301 ]
+    },
+    "properties": {
+    "County":"Stephens",
+    "Location Name":"",
+    "Address":"127 E Tugalo St Toccoa, GA 30577 ",
+    "Notes":"",
+    "Hours":"In front of Stephens County Government Building, which faces Alexander St. Attached to a white column on the front of the building.  Right next to City Hall, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.7944945,32.0505732 ]
+    },
+    "properties": {
+    "County":"Stewart",
+    "Location Name":"",
+    "Address":"1764 Broad Street Lumpkin, GA 31815 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2393224,32.0718729 ]
+    },
+    "properties": {
+    "County":"Sumter",
+    "Location Name":"Courthouse",
+    "Address":"500 W. LaMar Street Americus, GA 31709 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5413646,32.679648 ]
+    },
+    "properties": {
+    "County":"Talbot",
+    "Location Name":"",
+    "Address":"141 N Jefferson Ave Talbotton, GA 31827 ",
+    "Notes":"",
+    "Hours":""
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5391822,32.6773398 ]
+    },
+    "properties": {
+    "County":"Talbot",
+    "Location Name":"",
+    "Address":"188 Jackson Ave Talbotton, GA 31827 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.8965931,33.5546191 ]
+    },
+    "properties": {
+    "County":"Taliaferro",
+    "Location Name":"Elections Office",
+    "Address":"113 Monument St Crawfordville, GA 30631 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Hand to person behind counter M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.1189322,32.0861946 ]
+    },
+    "properties": {
+    "County":"Tattnall",
+    "Location Name":"Elections Office",
+    "Address":"114 West Brazell St Reidsville, GA 30453 ",
+    "Notes":"",
+    "Hours":"Outside, behind building in parking lot, easy access, like a mailbox, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.2364351,32.556902 ]
+    },
+    "properties": {
+    "County":"Taylor",
+    "Location Name":"",
+    "Address":"1B Ivy Street Butler, GA 31006 ",
+    "Notes":"",
+    "Hours":"Box attached to wall next to front door from street, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.8965706,32.0671003 ]
+    },
+    "properties": {
+    "County":"Telfair",
+    "Location Name":"Elections Office",
+    "Address":"19 East Oak St Annex Bldg 3 (modular) McCrae-Helena, GA 31055 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Slot in front door, M-F, 8-5, Closed 12-1 for lunch. Outside door of the elections office has a slot in it to drop the ballot. 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.4366198,31.7597886 ]
+    },
+    "properties": {
+    "County":"Terrell",
+    "Location Name":"",
+    "Address":"955 Forrester Drive SE Dawson, GA 39842 ",
+    "Notes":"",
+    "Hours":"Slot in fiberglass wall next to outside door with instructions 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9573509,30.8526813 ]
+    },
+    "properties": {
+    "County":"Thomas",
+    "Location Name":"Outside Elections Office",
+    "Address":"1402 E Jackson St Thomasville, GA 31792 ",
+    "Notes":"",
+    "Hours":"Next to outside front door, parking 10 ft away 24/7; second box in the front of the parking lot, drive by format"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.5029248,31.4632162 ]
+    },
+    "properties": {
+    "County":"Tift",
+    "Location Name":"Elections Office",
+    "Address":"222 Chestnut Ave, Building B Tifton, GA 31794 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Ground Floor, Gym of old High School M-F, 8-5, Next to door of elections office in lobby"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.5065856,31.4547345 ]
+    },
+    "properties": {
+    "County":"Tift",
+    "Location Name":"Charles Kent Admin Building",
+    "Address":"225 Tift Ave Tifton, GA 31794 ",
+    "Notes":"",
+    "Hours":"Outside front door, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3236394,32.2083869 ]
+    },
+    "properties": {
+    "County":"Toombs",
+    "Location Name":"Elections Office",
+    "Address":"125 W. Lincoln Ave Lyons, GA 30436 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Hand to person over counter, M-F, 8:30-5 PM"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7570263,34.94618 ]
+    },
+    "properties": {
+    "County":"Towns",
+    "Location Name":"Elections Office",
+    "Address":"67 Lakeview Circle, Suite A Hiawassee, GA 30546 ",
+    "Notes":"",
+    "Hours":"Box is outside the door and available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.5925252,32.3767967 ]
+    },
+    "properties": {
+    "County":"Treutlen",
+    "Location Name":"County Voter Registration Office",
+    "Address":"650 Second St. Soperton, GA 30457 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Inside office, M-F, 8 to 5 pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.0301668,33.0403048 ]
+    },
+    "properties": {
+    "County":"Troup",
+    "Location Name":"Elections Office",
+    "Address":"100 Ridley Ave LaGrange, GA 30240 ",
+    "Notes":"",
+    "Hours":"Box outside elections office door, available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9006269,33.1688566 ]
+    },
+    "properties": {
+    "County":"Troup",
+    "Location Name":"Hogansville Police Department",
+    "Address":"117 Lincoln Street Hogansville, GA 30230 ",
+    "Notes":"",
+    "Hours":"Available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.181915,32.87628 ]
+    },
+    "properties": {
+    "County":"Troup",
+    "Location Name":"City Hall",
+    "Address":"730 1st Ave West Point, GA 31833 ",
+    "Notes":"",
+    "Hours":"Available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6414309,31.6830553 ]
+    },
+    "properties": {
+    "County":"Turner",
+    "Location Name":"Elections Board",
+    "Address":"1807 US-41 Sycamore, GA 31790 ",
+    "Notes":"",
+    "Hours":"Box is on front porch available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3455786,32.6877273 ]
+    },
+    "properties": {
+    "County":"Twiggs",
+    "Location Name":"Elections Office",
+    "Address":"425 Railroad St N Jeffersonville, GA 31044 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Located inside the Courthouse, black secured box with security guards, M-F, 9-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.9606382,34.8785249 ]
+    },
+    "properties": {
+    "County":"Union",
+    "Location Name":"Elections Office",
+    "Address":"65 Courthouse St. Blairsville, GA 30512 ",
+    "Notes":"",
+    "Hours":"Dropbox is outside the Courthouse door, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.3252617,32.8869933 ]
+    },
+    "properties": {
+    "County":"Upson",
+    "Location Name":"Elections Office",
+    "Address":"305 S Hightower Street, Suite 130 Thomaston, GA 30286 ",
+    "Notes":"",
+    "Hours":"Outdoor dropbox 24/7, also has an indoor dropbox"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -85.2804317,34.7048823 ]
+    },
+    "properties": {
+    "County":"Walker",
+    "Location Name":"Elections Office",
+    "Address":"101 S. Duke street Lafayette, GA 30728 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Rear of building, brown box available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.6987814,33.8017283 ]
+    },
+    "properties": {
+    "County":"Walton",
+    "Location Name":"Elections Office",
+    "Address":"1110 E. Spring Street Monroe, GA 30655 ",
+    "Notes":"",
+    "Hours":"24-7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3608734,31.2112585 ]
+    },
+    "properties": {
+    "County":"Ware",
+    "Location Name":"Ware County Elections office",
+    "Address":"408 Tebeau Street Waycross, GA 31501 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.3560358,31.2152934 ]
+    },
+    "properties": {
+    "County":"Ware",
+    "Location Name":"County Administration Building",
+    "Address":"305 Oak Street Waycross, GA 31501 ",
+    "Notes":"",
+    "Hours":"In rear of building, 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.6618624,33.4080089 ]
+    },
+    "properties": {
+    "County":"Warren",
+    "Location Name":"",
+    "Address":"48 Warren St Warrenton, GA 30828 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Drop off in person during business hours"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.8115868,32.98348 ]
+    },
+    "properties": {
+    "County":"Washington",
+    "Location Name":"",
+    "Address":"132 W. Haynes St, Room 108 Sandersville, GA 31082 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Physical drop off only M-F 8am-5pm"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -81.8799255,31.6040932 ]
+    },
+    "properties": {
+    "County":"Wayne",
+    "Location Name":"Registrar's office (inside County Courthouse)",
+    "Address":"174 N. Brunswick Jesup, GA 31598 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Dropoff in office M-F, 8-5"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.0165437,31.4872449 ]
+    },
+    "properties": {
+    "County":"Wayne",
+    "Location Name":"Screven City Hall",
+    "Address":"103 W JL Tyre Street Screven, GA 31560 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.0287298,31.6640181 ]
+    },
+    "properties": {
+    "County":"Wayne",
+    "Location Name":"Odum City Hall",
+    "Address":"217 S Church Street Odum, GA 31555 ",
+    "Notes":"",
+    "Hours":"24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.5368194,32.0673047 ]
+    },
+    "properties": {
+    "County":"Webster",
+    "Location Name":"",
+    "Address":"6622 Cass St. Preston, GA 31824 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"hand deliver only, 8-4:30, M-F"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.7832068,32.1487941 ]
+    },
+    "properties": {
+    "County":"Wheeler",
+    "Location Name":"Elections Office",
+    "Address":"16 W Forest Ave Alamo, GA 31634 ",
+    "Notes":"",
+    "Hours":"Beside the door, outside, available 24/7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.7548177,34.6173796 ]
+    },
+    "properties": {
+    "County":"White",
+    "Location Name":"Elections Office",
+    "Address":"1241 Helen Hwy, Suite 210- A Cleveland, GA 30528 ",
+    "Notes":"",
+    "Hours":"drop box slot is located on the back door of the voter registration office in the Mauney Building. Ballot can be put through slot at any time, also a freestanding dropbox next to the slot"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -84.9711886,34.7724498 ]
+    },
+    "properties": {
+    "County":"Whitfield",
+    "Location Name":"Elections Office, Whitfield County Courthouse",
+    "Address":"205 N Selvidge St. Suite K Dalton, GA 30720 ",
+    "Notes":"",
+    "Hours":"Small black Absentee Ballot Drop Box located in front, on the South Side of Entrance"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.3133715,31.9910406 ]
+    },
+    "properties": {
+    "County":"Wilcox",
+    "Location Name":"Elections Office (inside)",
+    "Address":"377 West College Street Abbeville, GA 31001 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"M-F 8-5, bring ballots & applications inside - no plan to get a dropbox"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -82.7390393,33.7382247 ]
+    },
+    "properties": {
+    "County":"Wilkes",
+    "Location Name":"Elections Office, Wilkes County Courthouse",
+    "Address":"23 Court Street, Room 113 Washington, GA 30673 ",
+    "Notes":"",
+    "Hours":"freestanding dropbox just outside the courthouse, on left - see photo on website"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.1739023,32.8107241 ]
+    },
+    "properties": {
+    "County":"Wilkinson",
+    "Location Name":"Elections Office",
+    "Address":"100 Bacon St., Room 133 Irwinton, GA 31042 ",
+    "Notes":"",
+    "Hours":"Freestanding black Dropbox on right side of courthouse"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -83.8361158,31.5279022 ]
+    },
+    "properties": {
+    "County":"Worth",
+    "Location Name":"",
+    "Address":"201 North Main Street, Room 10 Sylvester, GA 31791 ",
+    "Notes":"Note: This Dropbox may not be open 24/7",
+    "Hours":"Freestanding black Dropbox on flagpole (north) side of courthouse, near one of two double doors, before you get to the jail"
+    }
+  }
+]
+}
+ 
+ // Initialize bounds based on markers
+   var bounds = new mapboxgl.LngLatBounds();
+  
+  // add markers to map
+geojson.features.forEach(function(marker) {
+    
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+      .setHTML('<h3>' + marker.properties.County + ' County</h3><p><b>Location Name: </b>' + marker.properties['Location Name'] + '</p>' + '<p><b>Address: </b>' + marker.properties.Address + '</p>' + '<p><b>Hours: </b>' + marker.properties.Hours + '</p>'))
+    .addTo(map);
+  
+  // Find bounds
+  bounds.extend(marker.geometry.coordinates)
+  
+});
+  
+  // Create bounds
+  map.fitBounds(bounds, {padding: 53});
+
+</script>
+
+</body>
+</html>
