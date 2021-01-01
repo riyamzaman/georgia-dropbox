@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
+
     <style>
       body {
         margin: 0;
@@ -15,12 +16,61 @@
 
       #map {
         position: absolute;
-        top: 0;
+        top: 50px;
         bottom: 0;
         width: 100%;
       }
-      
-      .marker {
+
+    /**
+    * Set rules for how the map overlays
+    * (information box and legend) will be displayed
+    * on the page. */
+    .map-overlay {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.8);
+      margin-right: 20px;
+      margin-left: 20px;
+      font-family: Open Sans, sans-serif;
+      overflow: auto;
+      border-radius: 3px;
+    }
+
+    #features {
+      padding: 15px;
+      top: 55px;
+      height: 330px;
+      margin-top: 20px;
+      width: 320px;
+      opacity: .9;
+      font: 13px/22px 'Open Sans', Open Sans, Open Sans, sans-serif;
+    }
+
+    #legend {
+      padding: 10px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      line-height: 18px;
+      height: 170px;
+      margin-bottom: 40px;
+      width: 190px;
+      font: 12px/20px 'Open Sans', Open Sans, Open Sans, sans-serif;
+      opacity:.9;
+    }
+
+    .map-overlay h4 {
+        margin: 0 0 10px;
+    }
+
+    .map-overlay div span {
+        border-radius: 50%;
+        display: inline-block;
+        height: 10px;
+        margin-right: 5px;
+        width: 10px;
+    }
+        
+    .marker {
         background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7BsXMpeKcFwnT04gA41jSZMdCF9eQZmaqrw&usqp=CAU');
         background-size: cover;
         width: 5px;
@@ -37,12 +87,53 @@
         text-align: center;
         font-family: 'Open Sans', sans-serif;
       }
+
+      /* Add a black background color to the top navigation */
+      .topnav {
+        background-color: #191a1a;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+      }
+
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        font-family: Open Sans, sans-serif;
+      }
       
     </style>
 </head>
 <body>
 
+<div class="topnav">
+  <a href="file:///C:/Users/riyam/OneDrive/Desktop/georgia.html">2020 Georgia Election Drop Box Distribution Explorer</a>
+</div>
+
 <div id='map'></div>
+  <div class='map-overlay' id='features'><h2>Turnout Data By County</h2><div id='pd'><p>
+  This visualization was created to see whether election drop box distribution had an impact on voter turnout in the 2020 general election.<br /><p><i>Hover over a county to check out the data.</i><br /></p>
+  <p>You can also click on each yellow dot, which represents a drop box location, to learn about what its hours and notes/restrictions were (if available).</p>
+  </p>
+  <p><b>Sources:</b><br />
+  - <a href="https://faq.georgiavoter.guide/en/article/absentee-ballot-drop-box-locations">Georgia Ballot Drop Box Locations</a><br />
+  - <a href="https://results.enr.clarityelections.com/GA/105369/web.264614/#/access-to-races">2020 General Election County Turnout Data</a><br /></p>
+  </div>
+</div>
+<div class='map-overlay' id='legend'>
+    <h4>Average Number of Registered Voters Per County Dropbox</h4>
+    <div><span style="background-color: #000000"></span>546,711+</div>
+    <div><span style="background-color: #230029"></span>171,905 - 546,710</div>
+    <div><span style="background-color: #460053"></span>75,356 - 171,904</div>
+    <div><span style="background-color: #6a007d"></span>30,325 - 75,355</div>
+    <div><span style="background-color: #8d00a7"></span>13,072 - 30,324</div>
+    <div><span style="background-color: #b100d1"></span>0 - 13,071</div>
+</div>
 
 <script>
   
@@ -50,52 +141,76 @@ mapboxgl.accessToken = 'pk.eyJ1IjoicnphbWFuIiwiYSI6ImNramFnM3cyczFvZTQyeHFnb3I1Z
 
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/dark-v10',
+  style: 'mapbox://styles/rzaman/ckjdhasbp122a19pkqi7d9fup',
   center: [-96, 37.8],
   zoom: 3
 });
   
-// Fetch JSON from github
+// Live callback function
+map.on('load', function() {
 
-const parseJson = async response => {
-  const text = await response.text()
-  try{
-    const json = JSON.parse(text)
-    return json
-  } catch(err) {
-    throw new Error("Did not receive JSON, instead received: " + text)
+  /**var layers = ['0-13071','13072-30324','30325-75355','75356-171904','171905-546710','546711+'];**/
+
+  // Identify which county is at location of the cursor, 
+  // if any, and update information window
+  map.on('mousemove', function(e) {
+    var counties = map.queryRenderedFeatures(e.point, {
+      layers: ['georgia-counties']
+    });
+
+    if (counties.length > 0) {
+      document.getElementById('pd').innerHTML = '<h3><strong>' + counties[0].properties.NAME + ' County</strong></h3><p><strong>County Turnout Percentage: </strong>' + (counties[0].properties["ga-turnout-4_Percent_Turnout"]*100).toFixed(2) + '%</p>';
+    } else {
+      document.getElementById('pd').innerHTML = '<p>This visualization was created to see whether election drop box distribution had an impact on voter turnout in the 2020 general election.</p><p><i>Hover over a county to check out the data.</i><br /></p><p>You can also click on each yellow dot, which represents a drop box location, to learn about what its hours and notes/restrictions were (if available).</p><p><b>Sources:</b><br />- <a href="https://faq.georgiavoter.guide/en/article/absentee-ballot-drop-box-locations">Georgia Ballot Drop Box Locations</a><br />- <a href="https://results.enr.clarityelections.com/GA/105369/web.264614/#/access-to-races">2020 General Election County Turnout Data</a><br /></p>';
+    }
+  });
+
+  map.getCanvas().style.cursor = 'default';
+
+  // Fetch JSON from github
+
+  const parseJson = async response => {
+    const text = await response.text()
+    try{
+      const json = JSON.parse(text)
+      return json
+    } catch(err) {
+      throw new Error("Did not receive JSON, instead received: " + text)
+    }
   }
-}
 
-fetch('https://raw.githubusercontent.com/riyamzaman/georgia-dropbox/main/georgia-drop-boxes.geojson')
-  .then(parseJson)
-  .then(geojson => {
- 
- // Initialize bounds based on markers
-   var bounds = new mapboxgl.LngLatBounds();
-  
-  // add markers to map
-  geojson.features.forEach(function(marker) {
+  fetch('https://raw.githubusercontent.com/riyamzaman/georgia-dropbox/main/georgia-drop-boxes.geojson')
+    .then(parseJson)
+    .then(geojson => {
+   
+   // Initialize bounds based on markers
+     var bounds = new mapboxgl.LngLatBounds();
     
-  // create a HTML element for each feature
-  var el = document.createElement('div');
-  el.className = 'marker';
+    // add markers to map
+    geojson.features.forEach(function(marker) {
+      
+    // create a HTML element for each feature
+    var el = document.createElement('div');
+    el.className = 'marker';
 
-  // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
-    .setLngLat(marker.geometry.coordinates)
-    .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
-      .setHTML('<h3>' + marker.properties.County + ' County</h3><p><b>Location Name: </b>' + marker.properties['Location Name'] + '</p>' + '<p><b>Address: </b>' + marker.properties.Address + '</p>' + '<p><b>Hours: </b>' + marker.properties.Hours + '</p>'))
-    .addTo(map);
-  
-  // Find bounds
-  bounds.extend(marker.geometry.coordinates)
-  
+    // make a marker for each feature and add to the map
+    new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+        .setHTML('<h3>' + marker.properties.County + ' County</h3><p><b>Location Name: </b>' + marker.properties['Location Name'] + '</p>' + '<p><b>Address: </b>' + marker.properties.Address + '</p>' + '<p><b>Hours: </b>' + marker.properties.Hours + '</p>'))
+      .addTo(map);
+    
+    // Find bounds from markers
+    bounds.extend(marker.geometry.coordinates)
+    
+    });
+
+    // Fit bounds
+    map.fitBounds(bounds, {padding: 53});
+
+  })
+
 });
-
-  // Create bounds
-  map.fitBounds(bounds, {padding: 53});
-})
 
 </script>
 
