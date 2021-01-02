@@ -13,9 +13,8 @@ If you hover over a county, you can view the following turnout and drop box info
 - Total number of registered voters that did not vote (non-voters)
 - Drop box count
 - Average number of registered voters per drop box
-- Difference between the number of non-voters and average number of registered voters per drop box. (This metric was included to see the degree of an excess number of non-voters even if an additional drop box in the county were to be added.)
 
-![alt text](https://i.ibb.co/THKnzfy/Screenshot-3.png)
+![alt text](https://i.ibb.co/bLWzDWQ/Screenshot-5.png)
 
 
 You can also click on each yellow dot, which represents a drop box location, to learn about what its hours and notes/restrictions were (if available).
