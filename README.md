@@ -3,7 +3,7 @@ This visualization was created to explore whether election drop box distribution
 
 A look at the dashboard:
 
-![alt text](https://i.ibb.co/TK06pVT/ga-drop-box-preview.png)
+![alt text](https://i.ibb.co/7gr2VnG/ga-db-2.png)
 
 
 If you hover over a county, you can view the following turnout and drop box information:
@@ -15,17 +15,17 @@ If you hover over a county, you can view the following turnout and drop box info
 - Average number of registered voters per drop box
 - Difference between the number of non-voters and average number of registered voters per drop box. (This metric was included to see the degree of an excess number of non-voters even if an additional drop box in the county were to be added.)
 
-![alt text](https://i.ibb.co/K2jsCwz/Screenshot-1.png)
+![alt text](https://i.ibb.co/THKnzfy/Screenshot-3.png)
 
 
 You can also click on each yellow dot, which represents a drop box location, to learn about what its hours and notes/restrictions were (if available).
 
-![alt text](https://i.ibb.co/Mg0Cckc/drop-box-preview.png)
+![alt text](https://i.ibb.co/WxvD09G/db-prev-2.png)
 
 
 For a more granular view of drop box distribution, you can zoom in to see how drop boxes are distributed within a county.
 
-![alt text](https://i.ibb.co/1KSFgfS/Screenshot-2.png)
+![alt text](https://i.ibb.co/vJsJR6k/Screenshot-4.png)
 
 
 Note: These are drop boxes that were active for Georgia's 2020 general election in November. The additional drop boxes that have been since added for the January 2021 runoff election are not included.
