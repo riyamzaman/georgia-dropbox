@@ -29,6 +29,8 @@ For a more granular view of drop box distribution, you can zoom in to see how dr
 
 Note: These are drop boxes that were active for Georgia's 2020 general election in November. The additional drop boxes that have been since added for the January 2021 runoff election are not included.
 
+View live site at: https://riyamzaman.github.io/georgia-dropbox/
+
 Sources:
 - https://faq.georgiavoter.guide/en/article/absentee-ballot-drop-box-locations
 - https://results.enr.clarityelections.com/GA/105369/web.264614/#/access-to-races
